@@ -25,7 +25,7 @@ serve(async (req) => {
       apiVersion: '2023-10-16',
     });
 
-    const { amount, description, successUrl, cancelUrl } = await req.json();
+    const { amount, description, plan, successUrl, cancelUrl } = await req.json();
 
     // Validate inputs
     if (!amount || amount <= 0) {
@@ -38,7 +38,7 @@ serve(async (req) => {
       throw new Error('Success and cancel URLs are required');
     }
 
-    console.log('Creating checkout session for:', { amount, description });
+    console.log('Creating checkout session for:', { amount, description, plan });
 
     // Create Stripe Checkout Session
     const session = await stripe.checkout.sessions.create({
@@ -56,8 +56,11 @@ serve(async (req) => {
         },
       ],
       mode: 'payment',
-      success_url: successUrl,
+      success_url: `${successUrl}?session_id={CHECKOUT_SESSION_ID}&plan=${plan || 'unknown'}`,
       cancel_url: cancelUrl,
+      metadata: {
+        plan: plan || 'unknown'
+      }
     });
 
     console.log('Checkout session created:', session.id);

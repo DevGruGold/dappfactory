@@ -21,15 +21,21 @@ export const PaymentButton = ({ amount, description, label, variant = 'default' 
     setIsLoading(true);
     
     try {
+      // Extract plan from description ("Pro Subscription" -> "pro")
+      const plan = description.toLowerCase().includes('enterprise') ? 'enterprise' 
+        : description.toLowerCase().includes('pro') ? 'pro' 
+        : 'free';
+
       const successUrl = `${window.location.origin}/checkout/success`;
       const cancelUrl = `${window.location.origin}/checkout/cancel`;
 
-      console.log('Initiating payment:', { amount, description });
+      console.log('Initiating payment:', { amount, description, plan });
 
       const { data, error } = await supabase.functions.invoke('create-checkout-session', {
         body: {
           amount,
           description,
+          plan,
           successUrl,
           cancelUrl,
         },

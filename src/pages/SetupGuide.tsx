@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Download, Terminal, Rocket, Copy, Check } from 'lucide-react';
+import { Download, Terminal, Rocket, Copy, Check, Crown } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
+import { ScriptLibrary } from '@/components/ScriptLibrary';
+import { AIScriptGenerator } from '@/components/AIScriptGenerator';
 
 const SetupGuide = () => {
   const { t } = useTranslation();
@@ -14,6 +16,7 @@ const SetupGuide = () => {
   const [hasAccess, setHasAccess] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [copiedStep, setCopiedStep] = useState<number | null>(null);
+  const [userTier, setUserTier] = useState<'free' | 'pro' | 'enterprise'>('free');
 
   useEffect(() => {
     checkPaymentAccess();
@@ -24,15 +27,13 @@ const SetupGuide = () => {
       const { data: { session } } = await supabase.auth.getSession();
       
       if (!session) {
-        toast({
-          title: "Authentication Required",
-          description: "Please complete payment to access the setup guide.",
-          variant: "destructive",
-        });
-        navigate('/#pricing');
+        setHasAccess(true); // Allow free tier access without login
+        setUserTier('free');
+        setIsLoading(false);
         return;
       }
 
+      // Check for payment and determine tier
       const { data: payments, error } = await supabase
         .from('payments')
         .select('*')
@@ -42,42 +43,48 @@ const SetupGuide = () => {
 
       if (error) {
         console.error('Error checking payment:', error);
-        toast({
-          title: "Error",
-          description: "Unable to verify payment status.",
-          variant: "destructive",
-        });
-        navigate('/#pricing');
-        return;
       }
 
       if (!payments || payments.length === 0) {
-        toast({
-          title: "Payment Required",
-          description: "Please complete payment to access the setup guide.",
-          variant: "destructive",
-        });
-        navigate('/#pricing');
-        return;
+        setUserTier('free');
+      } else {
+        const plan = payments[0].plan?.toLowerCase();
+        setUserTier(plan === 'enterprise' ? 'enterprise' : plan === 'pro' ? 'pro' : 'free');
       }
 
       setHasAccess(true);
     } catch (error) {
       console.error('Payment check error:', error);
-      navigate('/#pricing');
+      setHasAccess(true);
+      setUserTier('free');
     } finally {
       setIsLoading(false);
     }
   };
 
   const copyToClipboard = (text: string, step: number) => {
-    navigator.clipboard.writeText(text);
-    setCopiedStep(step);
-    toast({
-      title: "Copied!",
-      description: "Command copied to clipboard",
-    });
-    setTimeout(() => setCopiedStep(null), 2000);
+    // For script download, get actual token
+    if (step === 3) {
+      supabase.auth.getSession().then(({ data: { session } }) => {
+        const token = session?.access_token || 'YOUR_TOKEN';
+        const finalCommand = text.replace('YOUR_TOKEN', token);
+        navigator.clipboard.writeText(finalCommand);
+        setCopiedStep(step);
+        toast({
+          title: "Copied!",
+          description: "Command copied to clipboard with your auth token",
+        });
+        setTimeout(() => setCopiedStep(null), 2000);
+      });
+    } else {
+      navigator.clipboard.writeText(text);
+      setCopiedStep(step);
+      toast({
+        title: "Copied!",
+        description: "Command copied to clipboard",
+      });
+      setTimeout(() => setCopiedStep(null), 2000);
+    }
   };
 
   if (isLoading) {
@@ -123,9 +130,11 @@ const SetupGuide = () => {
     {
       number: 3,
       title: "Install MaticDapp",
-      description: "Copy and run this command to install MaticDapp on your device:",
+      description: userTier === 'free' 
+        ? "Copy and run this command to install the basic MaticDapp script:"
+        : "Copy and run this command to download any template from the library below:",
       icon: Rocket,
-      command: "curl -L https://gist.github.com/DevGruGold/56cb10f2c66c1f48b070398051433c51/raw/ -o install_maticdapp_v2.py && python3 install_maticdapp_v2.py",
+      command: `curl -L "${import.meta.env.VITE_SUPABASE_URL}/functions/v1/get-script?template=polygon-basic" -H "Authorization: Bearer YOUR_TOKEN" -o install.py && python3 install.py`,
       action: null,
     },
   ];
@@ -179,6 +188,53 @@ const SetupGuide = () => {
               </div>
             </Card>
           ))}
+
+          {/* Free Tier Upgrade CTA */}
+          {userTier === 'free' && (
+            <Card className="p-8 bg-gradient-to-br from-primary/10 to-secondary/10 border-2 border-primary/20">
+              <div className="text-center space-y-4">
+                <Crown className="h-12 w-12 mx-auto text-primary" />
+                <h3 className="text-2xl font-bold">Unlock 18+ Pro Templates</h3>
+                <p className="text-muted-foreground">
+                  Get access to deployment scripts for Ethereum, BSC, Arbitrum, Optimism, 
+                  bridge integrations, DeFi protocols, and more!
+                </p>
+                <Button size="lg" onClick={() => navigate('/#pricing')}>
+                  View Pro Plans
+                </Button>
+              </div>
+            </Card>
+          )}
+
+          {/* Pro Tier: Script Library */}
+          {(userTier === 'pro' || userTier === 'enterprise') && (
+            <div className="mt-12">
+              <ScriptLibrary />
+            </div>
+          )}
+
+          {/* Pro Tier Upgrade CTA */}
+          {userTier === 'pro' && (
+            <Card className="p-8 mt-8 bg-gradient-to-br from-primary/10 to-secondary/10 border-2 border-primary/20">
+              <div className="text-center space-y-4">
+                <Crown className="h-12 w-12 mx-auto text-primary" />
+                <h3 className="text-2xl font-bold">Need Custom Solutions?</h3>
+                <p className="text-muted-foreground">
+                  Upgrade to Enterprise for AI-powered custom script generation tailored to your unique requirements
+                </p>
+                <Button size="lg" onClick={() => navigate('/#pricing')}>
+                  Upgrade to Enterprise
+                </Button>
+              </div>
+            </Card>
+          )}
+
+          {/* Enterprise Tier: AI Generator */}
+          {userTier === 'enterprise' && (
+            <div className="mt-12">
+              <AIScriptGenerator />
+            </div>
+          )}
         </div>
 
       </div>
