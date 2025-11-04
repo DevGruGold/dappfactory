@@ -1,6 +1,8 @@
 import { Mail, Phone } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="bg-background border-t">
       <div className="container mx-auto px-4 py-6 md:py-8">
@@ -22,7 +24,7 @@ export const Footer = () => {
             </a>
           </div>
           <p className="text-xs md:text-sm text-muted-foreground text-center md:text-right">
-            © {new Date().getFullYear()} The dApp Factory. All rights reserved.
+            {t.footer.copyright.replace('{year}', new Date().getFullYear().toString())}
           </p>
         </div>
       </div>

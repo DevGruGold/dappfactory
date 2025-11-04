@@ -10,6 +10,7 @@ import { Web3Modal } from '@web3modal/react';
 import { publicProvider } from 'wagmi/providers/public';
 import Index from "./pages/Index";
 import { Footer } from "./components/Footer";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || 'default-project-id';
 
@@ -37,19 +38,21 @@ const App = () => {
   return (
     <WagmiConfig config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <div className="min-h-screen flex flex-col">
-              <Routes>
-                <Route path="/" element={<Index />} />
-              </Routes>
-              <Footer />
-            </div>
-          </BrowserRouter>
-        </TooltipProvider>
-        <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+        <LanguageProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <div className="min-h-screen flex flex-col">
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                </Routes>
+                <Footer />
+              </div>
+            </BrowserRouter>
+          </TooltipProvider>
+          <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+        </LanguageProvider>
       </QueryClientProvider>
     </WagmiConfig>
   );

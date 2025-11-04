@@ -3,30 +3,33 @@ import { useWeb3Modal } from '@web3modal/react';
 import { useAccount, useSignMessage } from 'wagmi';
 import { Button } from './ui/button';
 import { useToast } from './ui/use-toast';
+import { useTranslation } from '@/hooks/useTranslation';
 
 export const Web3Auth = () => {
   const { open } = useWeb3Modal();
   const { address, isConnected } = useAccount();
+  const { t } = useTranslation();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { toast } = useToast();
+  
   const { signMessage } = useSignMessage({
     onSuccess(signature) {
       setIsAuthenticated(true);
       toast({
-        title: "Successfully authenticated!",
-        description: "You are now signed in with your wallet.",
+        title: t.web3Auth.successTitle,
+        description: t.web3Auth.successDesc,
       });
       // Redirect back to app
       window.location.href = '/';
     },
     onError() {
       toast({
-        title: "Authentication failed",
-        description: "Please try again.",
+        title: t.web3Auth.errorTitle,
+        description: t.web3Auth.errorDesc,
         variant: "destructive",
       });
     }
   });
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const { toast } = useToast();
 
   const handleAuth = async () => {
     try {
@@ -40,8 +43,8 @@ export const Web3Auth = () => {
       }
     } catch (error) {
       toast({
-        title: "Authentication failed",
-        description: "Please try again.",
+        title: t.web3Auth.errorTitle,
+        description: t.web3Auth.errorDesc,
         variant: "destructive",
       });
     }
@@ -57,7 +60,7 @@ export const Web3Auth = () => {
     <div className="w-full max-w-md mx-auto">
       <div className="text-center mb-4">
         <p className="text-sm md:text-base text-muted-foreground">
-          Or connect your wallet to try features
+          {t.web3Auth.subtitle}
         </p>
       </div>
       <Button 
@@ -65,7 +68,7 @@ export const Web3Auth = () => {
         className="w-full min-h-[48px] text-base"
         size="lg"
       >
-        {!isConnected ? 'Connect Wallet' : !isAuthenticated ? 'Verify Wallet' : 'Connected'}
+        {!isConnected ? t.web3Auth.connectWallet : !isAuthenticated ? t.web3Auth.verifyWallet : t.web3Auth.connected}
       </Button>
     </div>
   );

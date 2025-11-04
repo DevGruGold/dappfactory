@@ -1,40 +1,42 @@
 import { Card } from "@/components/ui/card";
 import { Boxes, Cloud, Code, Shield, Smartphone } from "lucide-react";
-
-const features = [
-  {
-    title: "📱 Mobile-First Design",
-    description: "Built specifically for smartphones. Deploy from Termux on Android - no PC required.",
-    icon: Smartphone,
-  },
-  {
-    title: "Ready-to-Deploy Templates",
-    description: "Pre-built, audited smart contract templates optimized for mobile deployment",
-    icon: Code,
-  },
-  {
-    title: "One-Click Deployment",
-    description: "Deploy to Polygon with a single command - all from your smartphone",
-    icon: Cloud,
-  },
-  {
-    title: "Security First",
-    description: "Built-in security features and best practices for mobile developers",
-    icon: Shield,
-  },
-  {
-    title: "Modular Architecture",
-    description: "Easily combine different components to build your dApp on any device",
-    icon: Boxes,
-  },
-];
+import { useTranslation } from "@/hooks/useTranslation";
 
 export const Features = () => {
+  const { t } = useTranslation();
+  
+  const features = [
+    {
+      title: t.features.feature1Title,
+      description: t.features.feature1Desc,
+      icon: Smartphone,
+    },
+    {
+      title: t.features.feature2Title,
+      description: t.features.feature2Desc,
+      icon: Code,
+    },
+    {
+      title: t.features.feature3Title,
+      description: t.features.feature3Desc,
+      icon: Cloud,
+    },
+    {
+      title: t.features.feature4Title,
+      description: t.features.feature4Desc,
+      icon: Shield,
+    },
+    {
+      title: t.features.feature5Title,
+      description: t.features.feature5Desc,
+      icon: Boxes,
+    },
+  ];
   return (
     <section id="features" className="py-12 md:py-20 bg-background">
       <div className="container px-4">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12">
-          Everything You Need to Build dApps
+          {t.features.title}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6">
           {features.map((feature) => (

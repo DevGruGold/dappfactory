@@ -1,26 +1,28 @@
 import { Card } from "@/components/ui/card";
 import { Smartphone, Terminal, Zap, Globe } from "lucide-react";
-
-const highlights = [
-  {
-    icon: Smartphone,
-    text: "Works entirely on Android smartphones via Termux",
-  },
-  {
-    icon: Zap,
-    text: "No expensive computer or laptop needed",
-  },
-  {
-    icon: Terminal,
-    text: "Deploy smart contracts from anywhere",
-  },
-  {
-    icon: Globe,
-    text: "Perfect for developers on the go",
-  },
-];
+import { useTranslation } from "@/hooks/useTranslation";
 
 export const MobileCallout = () => {
+  const { t } = useTranslation();
+  
+  const highlights = [
+    {
+      icon: Smartphone,
+      text: t.mobileCallout.highlight1,
+    },
+    {
+      icon: Zap,
+      text: t.mobileCallout.highlight2,
+    },
+    {
+      icon: Terminal,
+      text: t.mobileCallout.highlight3,
+    },
+    {
+      icon: Globe,
+      text: t.mobileCallout.highlight4,
+    },
+  ];
   return (
     <section className="py-12 md:py-20 bg-gradient-to-b from-background to-muted/30">
       <div className="container px-4">
@@ -29,10 +31,10 @@ export const MobileCallout = () => {
             <Smartphone className="h-12 w-12 md:h-16 md:w-16 text-primary" />
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
-            Blockchain Development. In Your Pocket.
+            {t.mobileCallout.title}
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Build and deploy powerful dApps using nothing but your smartphone. No desktop required.
+            {t.mobileCallout.subtitle}
           </p>
         </div>
 
@@ -55,7 +57,7 @@ export const MobileCallout = () => {
             href="https://github.com/DevGruGold/dappfactory/blob/main/README.md"
             className="inline-flex items-center gap-2 text-primary hover:underline text-sm md:text-base font-medium min-h-[44px]"
           >
-            Learn How to Set Up Termux →
+            {t.mobileCallout.termuxLink}
           </a>
         </div>
       </div>

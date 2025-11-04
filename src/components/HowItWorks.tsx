@@ -1,48 +1,50 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Download, Terminal, Wallet, Rocket, Smartphone } from "lucide-react";
-
-const steps = [
-  {
-    number: 1,
-    title: "Install Termux & Get Started",
-    description: "Download Termux from F-Droid or Google Play on your Android smartphone. No PC needed.",
-    icon: Download,
-    mobileIcon: Smartphone,
-  },
-  {
-    number: 2,
-    title: "Run the Setup Script",
-    description: "Copy and paste one simple command into Termux. Our automated script handles everything.",
-    icon: Terminal,
-    mobileIcon: Smartphone,
-  },
-  {
-    number: 3,
-    title: "Configure Your Wallet",
-    description: "Set up MetaMask mobile, get test MATIC, and connect your Alchemy API - all from your phone.",
-    icon: Wallet,
-    mobileIcon: Smartphone,
-  },
-  {
-    number: 4,
-    title: "Deploy to Polygon",
-    description: "One command deploys your smart contract to Polygon. All from your smartphone - no PC needed.",
-    icon: Rocket,
-    mobileIcon: Smartphone,
-  },
-];
+import { useTranslation } from "@/hooks/useTranslation";
 
 export const HowItWorks = () => {
+  const { t } = useTranslation();
+  
+  const steps = [
+    {
+      number: 1,
+      title: t.howItWorks.step1Title,
+      description: t.howItWorks.step1Desc,
+      icon: Download,
+      mobileIcon: Smartphone,
+    },
+    {
+      number: 2,
+      title: t.howItWorks.step2Title,
+      description: t.howItWorks.step2Desc,
+      icon: Terminal,
+      mobileIcon: Smartphone,
+    },
+    {
+      number: 3,
+      title: t.howItWorks.step3Title,
+      description: t.howItWorks.step3Desc,
+      icon: Wallet,
+      mobileIcon: Smartphone,
+    },
+    {
+      number: 4,
+      title: t.howItWorks.step4Title,
+      description: t.howItWorks.step4Desc,
+      icon: Rocket,
+      mobileIcon: Smartphone,
+    },
+  ];
   return (
     <section id="how-it-works" className="py-12 md:py-20 bg-muted/30">
       <div className="container px-4">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
-            How It Works (On Your Phone!)
+            {t.howItWorks.title}
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Deploy smart contracts to Polygon in 4 simple steps - all from your smartphone via Termux
+            {t.howItWorks.subtitle}
           </p>
         </div>
         
@@ -79,11 +81,11 @@ export const HowItWorks = () => {
             className="group w-full sm:w-auto min-h-[48px] text-base"
             onClick={() => window.location.href = 'https://maticdapps.vercel.app/'}
           >
-            Start Building Your dApp
+            {t.howItWorks.ctaButton}
             <Smartphone className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform" />
           </Button>
           <p className="text-xs md:text-sm text-muted-foreground mt-3 md:mt-4">
-            Works on any Android smartphone with Termux
+            {t.howItWorks.ctaSubtext}
           </p>
         </div>
       </div>
