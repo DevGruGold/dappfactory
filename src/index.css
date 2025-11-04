@@ -98,4 +98,23 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Better touch targets on mobile */
+  @media (max-width: 768px) {
+    button, a {
+      min-height: 44px;
+    }
+  }
+
+  /* Optimize font size for mobile to prevent zoom on input focus */
+  @media (max-width: 640px) {
+    html {
+      font-size: 16px;
+    }
+  }
 }

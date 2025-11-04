@@ -3,25 +3,25 @@ import { Mail, Phone } from "lucide-react";
 export const Footer = () => {
   return (
     <footer className="bg-background border-t">
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-4">
+      <div className="container mx-auto px-4 py-6 md:py-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
             <a
               href="mailto:xmrtsolutions@gmail.com"
-              className="flex items-center gap-2 hover:text-primary transition-colors"
+              className="flex items-center gap-2 hover:text-primary transition-colors min-h-[44px] text-sm md:text-base"
             >
-              <Mail className="h-4 w-4" />
-              xmrtsolutions@gmail.com
+              <Mail className="h-5 w-5 md:h-4 md:w-4 flex-shrink-0" />
+              <span className="break-all">xmrtsolutions@gmail.com</span>
             </a>
             <a
               href="https://wa.me/50661500559"
-              className="flex items-center gap-2 hover:text-primary transition-colors"
+              className="flex items-center gap-2 hover:text-primary transition-colors min-h-[44px] text-sm md:text-base"
             >
-              <Phone className="h-4 w-4" />
-              +506 6150 0559
+              <Phone className="h-5 w-5 md:h-4 md:w-4 flex-shrink-0" />
+              <span>+506 6150 0559</span>
             </a>
           </div>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs md:text-sm text-muted-foreground text-center md:text-right">
             © {new Date().getFullYear()} The dApp Factory. All rights reserved.
           </p>
         </div>

@@ -1,66 +1,72 @@
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FileCode2, Settings, Zap, Rocket, ArrowRight } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Download, Terminal, Wallet, Rocket, Smartphone } from "lucide-react";
 
 const steps = [
   {
     number: 1,
-    title: "Choose Your Template",
-    description: "Select from pre-built, audited smart contract templates including ERC20 tokens, NFTs, DAOs, and more.",
-    icon: FileCode2,
+    title: "Install Termux & Get Started",
+    description: "Download Termux from F-Droid or Google Play on your Android smartphone. No PC needed.",
+    icon: Download,
+    mobileIcon: Smartphone,
   },
   {
     number: 2,
-    title: "Configure & Customize",
-    description: "Set up your wallet, connect Alchemy API, and customize your contract parameters with our intuitive interface.",
-    icon: Settings,
+    title: "Run the Setup Script",
+    description: "Copy and paste one simple command into Termux. Our automated script handles everything.",
+    icon: Terminal,
+    mobileIcon: Smartphone,
   },
   {
     number: 3,
-    title: "Automated Setup",
-    description: "Our system automatically installs dependencies, configures Hardhat, and prepares your development environment.",
-    icon: Zap,
+    title: "Configure Your Wallet",
+    description: "Set up MetaMask mobile, get test MATIC, and connect your Alchemy API - all from your phone.",
+    icon: Wallet,
+    mobileIcon: Smartphone,
   },
   {
     number: 4,
     title: "Deploy to Polygon",
-    description: "One-click deployment to Polygon Mumbai testnet or mainnet. Your dApp is live in minutes, not hours.",
+    description: "One command deploys your smart contract to Polygon. All from your smartphone - no PC needed.",
     icon: Rocket,
+    mobileIcon: Smartphone,
   },
 ];
 
 export const HowItWorks = () => {
   return (
-    <section id="how-it-works" className="py-20 bg-muted/30">
+    <section id="how-it-works" className="py-12 md:py-20 bg-muted/30">
       <div className="container px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            How It Works
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
+            How It Works (On Your Phone!)
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            From concept to deployment in four simple steps. No complex setup, no headaches.
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Deploy smart contracts to Polygon in 4 simple steps - all from your smartphone via Termux
           </p>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto mb-8 md:mb-12">
           {steps.map((step, index) => (
             <div key={step.number} className="relative">
-              <Card className="p-6 h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="mb-4">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
-                    <step.icon className="h-6 w-6" />
-                  </div>
-                  <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">
+              <Card className="p-4 md:p-6 hover:shadow-lg transition-shadow h-full flex flex-col min-h-[220px]">
+                <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
+                  <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg md:text-xl">
                     {step.number}
                   </div>
+                  <div className="flex gap-2">
+                    <step.icon className="h-6 w-6 md:h-8 md:w-8 text-primary" />
+                    <step.mobileIcon className="h-6 w-6 md:h-8 md:w-8 text-primary/60" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
-                <p className="text-muted-foreground">{step.description}</p>
+                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3">{step.title}</h3>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed flex-1">
+                  {step.description}
+                </p>
               </Card>
-              
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                  <ArrowRight className="h-8 w-8 text-primary/30" />
+                <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-primary text-2xl">
+                  →
                 </div>
               )}
             </div>
@@ -70,12 +76,15 @@ export const HowItWorks = () => {
         <div className="text-center">
           <Button 
             size="lg" 
-            className="group"
+            className="group w-full sm:w-auto min-h-[48px] text-base"
             onClick={() => window.location.href = 'https://maticdapps.vercel.app/'}
           >
             Start Building Your dApp
-            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            <Smartphone className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform" />
           </Button>
+          <p className="text-xs md:text-sm text-muted-foreground mt-3 md:mt-4">
+            Works on any Android smartphone with Termux
+          </p>
         </div>
       </div>
     </section>

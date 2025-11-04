@@ -54,8 +54,19 @@ export const Web3Auth = () => {
   }, [isConnected]);
 
   return (
-    <Button onClick={handleAuth} className="w-full md:w-auto">
-      {!isConnected ? 'Connect Wallet' : !isAuthenticated ? 'Verify Wallet' : 'Connected'}
-    </Button>
+    <div className="w-full max-w-md mx-auto">
+      <div className="text-center mb-4">
+        <p className="text-sm md:text-base text-muted-foreground">
+          Or connect your wallet to try features
+        </p>
+      </div>
+      <Button 
+        onClick={handleAuth} 
+        className="w-full min-h-[48px] text-base"
+        size="lg"
+      >
+        {!isConnected ? 'Connect Wallet' : !isAuthenticated ? 'Verify Wallet' : 'Connected'}
+      </Button>
+    </div>
   );
 };
