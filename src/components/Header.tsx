@@ -20,7 +20,7 @@ export const Header = () => {
               <a href="#how-it-works" className="text-sm hover:text-primary transition-colors">How it Works</a>
               <a href="https://github.com/DevGruGold/dappfactory/blob/main/README.md" className="text-sm hover:text-primary transition-colors">Docs</a>
             </nav>
-            <Button>Get Started</Button>
+            <Button onClick={() => window.location.href = 'https://maticdapps.vercel.app/'}>Get Started</Button>
           </div>
 
           <button 
@@ -37,7 +37,7 @@ export const Header = () => {
               <a href="#features" className="text-sm hover:text-primary transition-colors">Features</a>
               <a href="#how-it-works" className="text-sm hover:text-primary transition-colors">How it Works</a>
               <a href="https://github.com/DevGruGold/dappfactory/blob/main/README.md" className="text-sm hover:text-primary transition-colors">Docs</a>
-              <Button className="w-full">Get Started</Button>
+              <Button className="w-full" onClick={() => window.location.href = 'https://maticdapps.vercel.app/'}>Get Started</Button>
             </nav>
           </div>
         )}

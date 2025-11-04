@@ -6,14 +6,7 @@ export const Hero = () => {
   const { toast } = useToast();
 
   const handleGetStarted = () => {
-    const subject = encodeURIComponent("Demo Request for The dApp Factory");
-    const body = encodeURIComponent("Hi Joe,\n\nI'd like to request a demo of The dApp Factory.\n\nBest regards");
-    window.location.href = `mailto:xmrtsolutions@gmail.com?subject=${subject}&body=${body}`;
-    
-    toast({
-      title: "Demo Request Initiated",
-      description: "Opening your email client to send a demo request.",
-    });
+    window.location.href = 'https://maticdapps.vercel.app/';
   };
 
   return (
