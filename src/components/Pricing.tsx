@@ -10,38 +10,33 @@ export const Pricing = () => {
   const tiers = [
     {
       name: t.pricing.freeTier,
+      badge: t.pricing.freeBadge,
       price: t.pricing.freePrice,
-      features: [
-        t.pricing.freeFeature1,
-        t.pricing.freeFeature2,
-      ],
+      features: t.pricing.freeFeatures,
       cta: t.pricing.getStarted,
-      href: '#how-it-works',
+      href: '#termux-setup',
       highlighted: false,
+      gradient: 'from-muted to-muted',
     },
     {
       name: t.pricing.proTier,
+      badge: t.pricing.proBadge,
       price: t.pricing.proPrice,
       amount: 999, // $9.99 in cents
-      features: [
-        t.pricing.proFeature1,
-        t.pricing.proFeature2,
-        t.pricing.proFeature3,
-      ],
+      features: t.pricing.proFeatures,
       cta: t.pricing.subscribePro,
       highlighted: true,
+      gradient: 'from-primary/20 to-primary/5',
     },
     {
       name: t.pricing.enterpriseTier,
+      badge: t.pricing.enterpriseBadge,
       price: t.pricing.enterprisePrice,
       amount: 4999, // $49.99 in cents
-      features: [
-        t.pricing.enterpriseFeature1,
-        t.pricing.enterpriseFeature2,
-        t.pricing.enterpriseFeature3,
-      ],
+      features: t.pricing.enterpriseFeatures,
       cta: t.pricing.subscribeEnterprise,
       highlighted: false,
+      gradient: 'from-secondary/20 to-primary/10',
     },
   ];
 
@@ -61,30 +56,36 @@ export const Pricing = () => {
           {tiers.map((tier) => (
             <Card
               key={tier.name}
-              className={`relative flex flex-col ${
+              className={`relative flex flex-col transition-all duration-300 hover:shadow-xl ${
                 tier.highlighted
-                  ? 'border-primary shadow-lg shadow-primary/20 scale-105'
-                  : ''
+                  ? 'border-2 border-primary shadow-xl shadow-primary/20 md:scale-105'
+                  : 'border hover:border-primary/50'
               }`}
             >
+              {/* Top gradient accent */}
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${tier.gradient} rounded-t-lg`} />
+              
               {tier.highlighted && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
-                  {t.pricing.recommended || 'Recommended'}
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
+                  {t.pricing.recommended}
                 </div>
               )}
               
-              <CardHeader className="text-center pb-6">
+              <CardHeader className="text-center pb-6 pt-8">
+                <div className="mb-3 text-2xl">{tier.badge}</div>
                 <CardTitle className="text-2xl md:text-3xl mb-2">{tier.name}</CardTitle>
                 <CardDescription className="text-3xl md:text-4xl font-bold text-foreground">
                   {tier.price}
                 </CardDescription>
               </CardHeader>
 
-              <CardContent className="flex-grow space-y-3 md:space-y-4">
-                {tier.features.map((feature, index) => (
-                  <div key={index} className="flex items-start gap-2 md:gap-3">
-                    <Check className="h-5 w-5 md:h-6 md:w-6 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm md:text-base text-muted-foreground">{feature}</span>
+              <CardContent className="flex-grow space-y-3">
+                {tier.features.map((feature: string, index: number) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className={`text-sm ${index === 0 && tier.name !== t.pricing.freeTier ? 'font-semibold text-foreground' : 'text-muted-foreground'}`}>
+                      {feature}
+                    </span>
                   </div>
                 ))}
               </CardContent>

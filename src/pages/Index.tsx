@@ -7,6 +7,8 @@ import { MobileCallout } from "@/components/MobileCallout";
 import { TermuxSetup } from "@/components/TermuxSetup";
 import { Web3Auth } from "@/components/Web3Auth";
 import { Pricing } from "@/components/Pricing";
+import { PricingComparison } from "@/components/PricingComparison";
+import { WhatYouGet } from "@/components/WhatYouGet";
 
 const Index = () => {
   return (
@@ -18,6 +20,8 @@ const Index = () => {
       <HowItWorks />
       <TermuxSetup />
       <Pricing />
+      <PricingComparison />
+      <WhatYouGet />
       <div className="container mx-auto px-4 py-8 md:py-12">
         <Web3Auth />
       </div>
