@@ -1,5 +1,4 @@
 import { Features } from "@/components/Features";
-import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
@@ -15,7 +14,6 @@ const Index = () => {
       <div className="container mx-auto px-4 py-8">
         <Web3Auth />
       </div>
-      <Footer />
     </div>
   );
 };
