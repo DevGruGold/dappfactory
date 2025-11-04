@@ -18,7 +18,7 @@ export const Header = () => {
             <nav className="flex items-center space-x-6">
               <a href="#features" className="text-sm hover:text-primary transition-colors">Features</a>
               <a href="#how-it-works" className="text-sm hover:text-primary transition-colors">How it Works</a>
-              <a href="https://github.com/DevGruGold" className="text-sm hover:text-primary transition-colors">Docs</a>
+              <a href="https://github.com/DevGruGold/dappfactory/blob/main/README.md" className="text-sm hover:text-primary transition-colors">Docs</a>
             </nav>
             <Button>Get Started</Button>
           </div>
@@ -36,7 +36,7 @@ export const Header = () => {
             <nav className="flex flex-col space-y-4">
               <a href="#features" className="text-sm hover:text-primary transition-colors">Features</a>
               <a href="#how-it-works" className="text-sm hover:text-primary transition-colors">How it Works</a>
-              <a href="https://github.com/DevGruGold" className="text-sm hover:text-primary transition-colors">Docs</a>
+              <a href="https://github.com/DevGruGold/dappfactory/blob/main/README.md" className="text-sm hover:text-primary transition-colors">Docs</a>
               <Button className="w-full">Get Started</Button>
             </nav>
           </div>

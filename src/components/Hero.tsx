@@ -33,7 +33,7 @@ export const Hero = () => {
             Start Building
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Button>
-          <Button size="lg" variant="outline" onClick={() => window.location.href = 'https://github.com/DevGruGold'}>
+          <Button size="lg" variant="outline" onClick={() => window.location.href = 'https://github.com/DevGruGold/dappfactory/blob/main/README.md'}>
             View Documentation
           </Button>
         </div>
