@@ -11,6 +11,7 @@ import { publicProvider } from 'wagmi/providers/public';
 import Index from "./pages/Index";
 import CheckoutSuccess from "./pages/CheckoutSuccess";
 import CheckoutCancel from "./pages/CheckoutCancel";
+import SetupGuide from "./pages/SetupGuide";
 import { Footer } from "./components/Footer";
 import { LanguageProvider } from "./contexts/LanguageContext";
 
@@ -48,6 +49,7 @@ const App = () => {
               <div className="min-h-screen flex flex-col">
                 <Routes>
                   <Route path="/" element={<Index />} />
+                  <Route path="/setup" element={<SetupGuide />} />
                   <Route path="/checkout/success" element={<CheckoutSuccess />} />
                   <Route path="/checkout/cancel" element={<CheckoutCancel />} />
                 </Routes>

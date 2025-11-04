@@ -79,7 +79,7 @@ export const HowItWorks = () => {
           <Button 
             size="lg" 
             className="group w-full sm:w-auto min-h-[48px] text-base"
-            onClick={() => window.location.href = 'https://maticdapps.vercel.app/'}
+            onClick={() => window.location.href = '/#pricing'}
           >
             {t.howItWorks.ctaButton}
             <Smartphone className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform" />

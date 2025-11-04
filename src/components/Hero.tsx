@@ -6,7 +6,7 @@ export const Hero = () => {
   const { t } = useTranslation();
 
   const handleGetStarted = () => {
-    window.location.href = 'https://maticdapps.vercel.app/';
+    window.location.href = '/#pricing';
   };
 
   return (

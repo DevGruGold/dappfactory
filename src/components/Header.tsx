@@ -39,7 +39,7 @@ export const Header = () => {
               <a href="#how-it-works" className="text-sm hover:text-primary transition-colors min-h-[44px] flex items-center">{t.header.howItWorks}</a>
               <a href="https://github.com/DevGruGold/dappfactory/blob/main/README.md" className="text-sm hover:text-primary transition-colors min-h-[44px] flex items-center">{t.header.docs}</a>
             </nav>
-            <Button onClick={() => window.location.href = 'https://maticdapps.vercel.app/'}>{t.header.getStarted}</Button>
+            <Button onClick={() => window.location.href = '/#pricing'}>{t.header.getStarted}</Button>
           </div>
 
           <button 
@@ -79,7 +79,7 @@ export const Header = () => {
                 className="w-full min-h-[48px] text-base" 
                 onClick={() => {
                   handleNavClick();
-                  window.location.href = 'https://maticdapps.vercel.app/';
+                  window.location.href = '/#pricing';
                 }}
               >
                 {t.header.getStarted}
