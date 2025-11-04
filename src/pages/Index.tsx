@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { MobileCallout } from "@/components/MobileCallout";
+import { TermuxSetup } from "@/components/TermuxSetup";
 import { Web3Auth } from "@/components/Web3Auth";
 import { Pricing } from "@/components/Pricing";
 
@@ -15,8 +16,9 @@ const Index = () => {
       <MobileCallout />
       <Features />
       <HowItWorks />
+      <TermuxSetup />
       <Pricing />
-      <div className="container mx-auto px-4 py-12 md:py-16">
+      <div className="container mx-auto px-4 py-8 md:py-12">
         <Web3Auth />
       </div>
     </div>

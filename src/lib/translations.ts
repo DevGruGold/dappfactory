@@ -52,6 +52,18 @@ export const translations = {
       ctaButton: "Start Building Your dApp",
       ctaSubtext: "Works on any Android smartphone with Termux"
     },
+    termuxSetup: {
+      title: "Get Started with Termux",
+      subtitle: "Follow these steps to deploy dApps from your Android device",
+      step1Title: "Download Termux",
+      step1Desc: "Install Termux from Google Play Store or F-Droid",
+      step2Title: "Install Python",
+      step2Desc: "Open Termux and run this command",
+      step3Title: "Install MaticDapp",
+      step3Desc: "Copy and run this installation command",
+      upgradeCta: "Ready for advanced features?",
+      upgradeButton: "Unlock Premium Setup Guide"
+    },
     web3Auth: {
       subtitle: "Or connect your wallet to try features",
       connectWallet: "Connect Wallet",
@@ -153,6 +165,18 @@ export const translations = {
       step4Desc: "Un comando despliega tu contrato inteligente en Polygon. Todo desde tu smartphone - no se necesita PC.",
       ctaButton: "Comienza a Construir tu dApp",
       ctaSubtext: "Funciona en cualquier smartphone Android con Termux"
+    },
+    termuxSetup: {
+      title: "Comienza con Termux",
+      subtitle: "Sigue estos pasos para desplegar dApps desde tu dispositivo Android",
+      step1Title: "Descarga Termux",
+      step1Desc: "Instala Termux desde Google Play Store o F-Droid",
+      step2Title: "Instala Python",
+      step2Desc: "Abre Termux y ejecuta este comando",
+      step3Title: "Instala MaticDapp",
+      step3Desc: "Copia y ejecuta este comando de instalación",
+      upgradeCta: "¿Listo para funciones avanzadas?",
+      upgradeButton: "Desbloquear Guía Premium"
     },
     web3Auth: {
       subtitle: "O conecta tu billetera para probar las funciones",

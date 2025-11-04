@@ -181,20 +181,6 @@ const SetupGuide = () => {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <Card className="p-6 bg-primary/5">
-            <h3 className="text-xl font-semibold mb-2">Need Help?</h3>
-            <p className="text-muted-foreground mb-4">
-              Check out our documentation for detailed instructions and troubleshooting.
-            </p>
-            <Button
-              variant="outline"
-              onClick={() => window.open('https://github.com/DevGruGold/dappfactory/blob/main/README.md', '_blank')}
-            >
-              View Documentation
-            </Button>
-          </Card>
-        </div>
       </div>
     </div>
   );

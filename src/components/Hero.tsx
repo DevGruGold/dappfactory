@@ -29,7 +29,7 @@ export const Hero = () => {
             {t.hero.startBuilding}
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Button>
-          <Button size="lg" variant="outline" className="w-full sm:w-auto min-h-[48px]" onClick={() => window.location.href = 'https://github.com/DevGruGold/dappfactory/blob/main/README.md'}>
+          <Button size="lg" variant="outline" className="w-full sm:w-auto min-h-[48px]" onClick={() => window.location.href = '/#termux-setup'}>
             {t.hero.viewDocs}
           </Button>
         </div>

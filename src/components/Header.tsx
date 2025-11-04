@@ -37,7 +37,6 @@ export const Header = () => {
             <nav className="flex items-center space-x-6">
               <a href="#features" className="text-sm hover:text-primary transition-colors min-h-[44px] flex items-center">{t.header.features}</a>
               <a href="#how-it-works" className="text-sm hover:text-primary transition-colors min-h-[44px] flex items-center">{t.header.howItWorks}</a>
-              <a href="https://github.com/DevGruGold/dappfactory/blob/main/README.md" className="text-sm hover:text-primary transition-colors min-h-[44px] flex items-center">{t.header.docs}</a>
             </nav>
             <Button onClick={() => window.location.href = '/#pricing'}>{t.header.getStarted}</Button>
           </div>
@@ -67,13 +66,6 @@ export const Header = () => {
                 onClick={handleNavClick}
               >
                 {t.header.howItWorks}
-              </a>
-              <a 
-                href="https://github.com/DevGruGold/dappfactory/blob/main/README.md" 
-                className="text-base hover:text-primary transition-colors py-3 min-h-[48px] flex items-center"
-                onClick={handleNavClick}
-              >
-                {t.header.docs}
               </a>
               <Button 
                 className="w-full min-h-[48px] text-base" 

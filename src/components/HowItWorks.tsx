@@ -37,7 +37,7 @@ export const HowItWorks = () => {
     },
   ];
   return (
-    <section id="how-it-works" className="py-12 md:py-20 bg-muted/30">
+    <section id="how-it-works" className="py-8 md:py-12 bg-muted/30">
       <div className="container px-4">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">

@@ -24,7 +24,7 @@ export const MobileCallout = () => {
     },
   ];
   return (
-    <section className="py-12 md:py-20 bg-gradient-to-b from-background to-muted/30">
+    <section className="py-8 md:py-12 bg-gradient-to-b from-background to-muted/30">
       <div className="container px-4">
         <div className="text-center mb-8 md:mb-12">
           <div className="inline-block p-4 md:p-6 rounded-full bg-primary/10 mb-4 md:mb-6">
@@ -52,14 +52,6 @@ export const MobileCallout = () => {
           ))}
         </div>
 
-        <div className="text-center mt-8 md:mt-12">
-          <a 
-            href="https://github.com/DevGruGold/dappfactory/blob/main/README.md"
-            className="inline-flex items-center gap-2 text-primary hover:underline text-sm md:text-base font-medium min-h-[44px]"
-          >
-            {t.mobileCallout.termuxLink}
-          </a>
-        </div>
       </div>
     </section>
   );
