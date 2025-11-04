@@ -64,6 +64,41 @@ export const translations = {
     },
     footer: {
       copyright: "© {year} The dApp Factory. All rights reserved."
+    },
+    pricing: {
+      title: "Choose Your Plan",
+      subtitle: "Start building dApps from your smartphone",
+      freeTier: "Free",
+      proTier: "Pro",
+      enterpriseTier: "Enterprise",
+      freePrice: "$0",
+      proPrice: "$9.99/mo",
+      enterprisePrice: "$49.99/mo",
+      freeFeature1: "Basic smart contract templates",
+      freeFeature2: "Community support",
+      proFeature1: "All templates",
+      proFeature2: "Priority support",
+      proFeature3: "Mobile deployment guide",
+      enterpriseFeature1: "Custom templates",
+      enterpriseFeature2: "Dedicated support",
+      enterpriseFeature3: "Team collaboration",
+      getStarted: "Get Started",
+      subscribePro: "Subscribe to Pro",
+      subscribeEnterprise: "Subscribe to Enterprise",
+      processing: "Processing...",
+      recommended: "Recommended",
+      errorTitle: "Payment Error",
+      errorDesc: "Failed to initiate payment. Please try again."
+    },
+    checkoutSuccess: {
+      title: "Payment Successful!",
+      subtitle: "Thank you for your purchase. You now have access to premium features.",
+      ctaButton: "Go to Dashboard"
+    },
+    checkoutCancel: {
+      title: "Payment Cancelled",
+      subtitle: "Your payment was cancelled. No charges were made.",
+      ctaButton: "Back to Pricing"
     }
   },
   es: {
@@ -131,6 +166,41 @@ export const translations = {
     },
     footer: {
       copyright: "© {year} The dApp Factory. Todos los derechos reservados."
+    },
+    pricing: {
+      title: "Elige Tu Plan",
+      subtitle: "Comienza a construir dApps desde tu smartphone",
+      freeTier: "Gratis",
+      proTier: "Pro",
+      enterpriseTier: "Empresarial",
+      freePrice: "$0",
+      proPrice: "$9.99/mes",
+      enterprisePrice: "$49.99/mes",
+      freeFeature1: "Plantillas básicas de contratos inteligentes",
+      freeFeature2: "Soporte comunitario",
+      proFeature1: "Todas las plantillas",
+      proFeature2: "Soporte prioritario",
+      proFeature3: "Guía de despliegue móvil",
+      enterpriseFeature1: "Plantillas personalizadas",
+      enterpriseFeature2: "Soporte dedicado",
+      enterpriseFeature3: "Colaboración en equipo",
+      getStarted: "Comenzar",
+      subscribePro: "Suscribirse a Pro",
+      subscribeEnterprise: "Suscribirse a Empresarial",
+      processing: "Procesando...",
+      recommended: "Recomendado",
+      errorTitle: "Error de Pago",
+      errorDesc: "Error al iniciar el pago. Por favor, inténtalo de nuevo."
+    },
+    checkoutSuccess: {
+      title: "¡Pago Exitoso!",
+      subtitle: "Gracias por tu compra. Ahora tienes acceso a funciones premium.",
+      ctaButton: "Ir al Dashboard"
+    },
+    checkoutCancel: {
+      title: "Pago Cancelado",
+      subtitle: "Tu pago fue cancelado. No se realizaron cargos.",
+      ctaButton: "Volver a Precios"
     }
   }
 };

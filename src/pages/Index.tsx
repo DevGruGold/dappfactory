@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { MobileCallout } from "@/components/MobileCallout";
 import { Web3Auth } from "@/components/Web3Auth";
+import { Pricing } from "@/components/Pricing";
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <MobileCallout />
       <Features />
       <HowItWorks />
+      <Pricing />
       <div className="container mx-auto px-4 py-12 md:py-16">
         <Web3Auth />
       </div>
